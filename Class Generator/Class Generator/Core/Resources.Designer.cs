@@ -61,10 +61,10 @@ namespace Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;AccessModifier&gt; class &lt;Classname&gt;
-        ///{
-        ///	&lt;FieldTemplate&gt;
-        ///}.
+        ///   Looks up a localized string similar to public class {0}
+        ///{{
+        ///{1}
+        ///}}.
         /// </summary>
         internal static string ClassTemplate {
             get {
@@ -73,7 +73,8 @@ namespace Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to public &lt;FieldName&gt; &lt;DataType&gt; {set; get;}.
+        ///   Looks up a localized string similar to public {0} {1} {{set; get;}}
+        ///.
         /// </summary>
         internal static string FieldTemplate {
             get {

@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Database\SQLServer\SqlServer.cs" />
     <Compile Include="FileOperations.cs" />
-    <Compile Include="Generator.cs" />
+    <Compile Include="ClassGenerator.cs" />
     <Compile Include="Database\IDatabase.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

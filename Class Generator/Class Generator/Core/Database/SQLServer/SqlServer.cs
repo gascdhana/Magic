@@ -24,8 +24,7 @@ namespace Core.Database.SQLServer
                     Dictionary<string, Table> tableLookUp = new Dictionary<string, Table>();
                     con.Query<Table, Column, Table>(Resources.SQLServerQuery, (t, c) =>
                     {
-                        Table table ;
-                        if (!tableLookUp.TryGetValue(t.Name, out table))
+                        if (!tableLookUp.TryGetValue(t.Name, out Table table))
                         {
                             table = new Table
                             {
@@ -33,7 +32,7 @@ namespace Core.Database.SQLServer
                                 Schemaname = t.Schemaname,
                                 Column = new List<Column>()
                             };
-                            tableLookUp.Add(t.Name, table);
+                            tableLookUp.Add(table.Name, table);
                         }
 
                         table.Column.Add(c);

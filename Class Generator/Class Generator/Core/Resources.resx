@@ -118,14 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ClassTemplate" xml:space="preserve">
-    <value>&lt;AccessModifier&gt; class &lt;Classname&gt;
-{
-	&lt;FieldTemplate&gt;
-}</value>
+    <value>public class {0}
+{{
+{1}
+}}</value>
     <comment>Template for the class.</comment>
   </data>
   <data name="FieldTemplate" xml:space="preserve">
-    <value>public &lt;FieldName&gt; &lt;DataType&gt; {set; get;}</value>
+    <value>public {0} {1} {{set; get;}}
+</value>
     <comment>Template for the Field</comment>
   </data>
   <data name="SQLServerQuery" xml:space="preserve">
