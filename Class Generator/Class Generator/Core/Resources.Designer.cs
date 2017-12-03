@@ -61,9 +61,12 @@ namespace Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to public class {0}
+        ///   Looks up a localized string similar to namespace {0}
         ///{{
-        ///{1}
+        ///	public class {1}
+        ///	{{
+        ///	{2}
+        ///	}}
         ///}}.
         /// </summary>
         internal static string ClassTemplate {

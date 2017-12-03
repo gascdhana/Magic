@@ -43,7 +43,7 @@ namespace Core.Database.SQLServer
                 }
                 return tables;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 throw;
             }

@@ -5,16 +5,17 @@ namespace Core
 {
     public static class ClassGenerator
     {
-        public static string GenerateClass(Table table)
+        public static string GenerateClass(Table table, string nameSpace)
         {
             string classTemplate = Resources.ClassTemplate;
             string fieldTemplate = Resources.FieldTemplate;
-            string fields = "";
-            string @class;
-            if (String.IsNullOrEmpty(table.Name))
+            string fields = "", @class;
+
+            if (String.IsNullOrEmpty(table.Name) || String.IsNullOrEmpty(nameSpace))
             {
-                throw new ArgumentNullException("Table name can not be null or empty");
+                throw new ArgumentNullException("Table name or namespace can not be null or empty");
             }
+
             if (table.Column != null && table.Column.Any())
             {
                 try
@@ -23,7 +24,7 @@ namespace Core
                     {
                         fields = String.Concat(fields, '\t', String.Format(fieldTemplate, column.CLRType, column.Name));
                     }
-                    @class = String.Format(classTemplate, table.Name, fields);
+                    @class = String.Format(classTemplate, nameSpace, table.Name, fields);
                     return @class.Remove(@class.Length - 3, 2); ;
                 }
                 catch (Exception e)

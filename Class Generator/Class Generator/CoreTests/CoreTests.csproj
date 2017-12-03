@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="ClassGeneratorTests.cs" />
     <Compile Include="Database\SQLServer\SqlServerTests.cs" />
+    <Compile Include="FileOperationsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
