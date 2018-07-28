@@ -2,9 +2,135 @@
 
 namespace Core
 {
-    internal static class Extensions
+    /// <summary>
+    /// Indicate database table
+    /// </summary>
+    public class Table
     {
-        public static string GetCLRType(this string SqlDbType)
+        private string _name, _schema;
+
+        /// <summary>
+        /// Table name
+        /// </summary>
+        public string Name
+        {
+            set
+            {
+                _name = value;
+            }
+            get
+            {
+                return _name;
+            }
+        }
+
+        /// <summary>
+        /// Schema name
+        /// </summary>
+        public string Schema
+        {
+            set
+            {
+                _schema = value;
+            }
+            get
+            {
+                return _schema;
+            }
+        }
+
+        /// <summary>
+        /// Available columns
+        /// </summary>
+        public List<Column> Column { set; get; }
+    }
+
+    /// <summary>
+    /// Indicate a column in a table
+    /// </summary>
+    public class Column
+    {
+        private string _name, _dataType;
+        private int _size;
+        private bool _allowNull;
+
+        /// <summary>
+        /// Column Name
+        /// </summary>
+        public string Name
+        {
+            set
+            {
+                _name = value;
+            }
+            get
+            {
+                return _name;
+            }
+        }
+
+        /// <summary>
+        /// DB data type
+        /// </summary>
+        public string DataType
+        {
+            set
+            {
+                _dataType = value;
+            }
+            get
+            {
+                return _dataType;
+            }
+        }
+
+        /// <summary>
+        /// Compatible CLR type
+        /// </summary>
+        public string CLRType
+        {
+            get
+            {
+                return GetCLRType(_dataType);
+            }
+        }
+
+        /// <summary>
+        /// Size of a column
+        /// </summary>
+        public int Size
+        {
+            set
+            {
+                _size = value;
+            }
+            get
+            {
+                return _size;
+            }
+        }
+
+        /// <summary>
+        /// Is a nullable column
+        /// </summary>
+        public bool AllowNull
+        {
+            set
+            {
+                _allowNull = value;
+            }
+            get
+            {
+                return _allowNull;
+            }
+        }
+
+        /// <summary>
+        /// Return compatible CLR type for a BD type
+        /// </summary>
+        /// <param name="SqlDbType"></param>
+        /// <returns></returns>
+        private string GetCLRType(string SqlDbType)
         {
             string ClrType;
             if (!string.IsNullOrEmpty(SqlDbType))
@@ -115,22 +241,6 @@ namespace Core
                 return null;
             }
         }
-    }
-
-    public class Table
-    {
-        public string Name { set; get; }
-        public string Schemaname { set; get; }
-        public List<Column> Column { set; get; }
-    }
-
-    public class Column
-    {
-        public string Name { set; get; }
-        public string DataType { set; get; }
-        public string CLRType { get { return DataType.GetCLRType(); } }
-        public int Size { set; get; }
-        public bool AllowNull { set; get; }
     }
 }
 

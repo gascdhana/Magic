@@ -14,6 +14,10 @@ namespace Core.Database.SQLServer
             connectionString = _connectionString;
         }
 
+        /// <summary>
+        /// Return list of tables available user tables
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Table> GetTables()
         {
             IEnumerable<Table> tables = new List<Table>();
@@ -29,7 +33,7 @@ namespace Core.Database.SQLServer
                             table = new Table
                             {
                                 Name = t.Name,
-                                Schemaname = t.Schemaname,
+                                Schema = t.Schema,
                                 Column = new List<Column>()
                             };
                             tableLookUp.Add(table.Name, table);

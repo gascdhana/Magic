@@ -3,15 +3,15 @@ using System.Linq;
 
 namespace Core
 {
-    public static class ClassGenerator
+    public static class Generater
     {
-        public static string GenerateClass(Table table, string nameSpace)
+        public static string GenerateClass(Table table)
         {
             string classTemplate = Resources.ClassTemplate;
             string fieldTemplate = Resources.FieldTemplate;
             string fields = "", @class;
 
-            if (String.IsNullOrEmpty(table.Name) || String.IsNullOrEmpty(nameSpace))
+            if (String.IsNullOrEmpty(table.Name) || String.IsNullOrEmpty(table.Schema))
             {
                 throw new ArgumentNullException("Table name or namespace can not be null or empty");
             }
@@ -24,7 +24,7 @@ namespace Core
                     {
                         fields = String.Concat(fields, '\t', String.Format(fieldTemplate, column.CLRType, column.Name));
                     }
-                    @class = String.Format(classTemplate, nameSpace, table.Name, fields);
+                    @class = String.Format(classTemplate, table.Schema, table.Name, fields);
                     return @class.Remove(@class.Length - 3, 2); ;
                 }
                 catch (Exception e)

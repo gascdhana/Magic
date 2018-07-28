@@ -15,9 +15,9 @@ namespace Core.Tests
                 Table t = new Table
                 {
                     Name = "TestTable",
-                    Schemaname = "dbo"
+                    Schema = "dbo"
                 };
-                ClassGenerator.GenerateClass(t,"");
+                Generater.GenerateClass(t);
                 Assert.Fail();
             }
             catch (Exception e)
@@ -34,10 +34,10 @@ namespace Core.Tests
                 Table t = new Table
                 {
                     Name = "TestTable",
-                    Schemaname = "dbo",
+                    Schema = "dbo",
                     Column = new System.Collections.Generic.List<Column>()
                 };
-                ClassGenerator.GenerateClass(t,"");
+                Generater.GenerateClass(t);
                 Assert.Fail();
             }
             catch (ArgumentException e)
@@ -54,61 +54,15 @@ namespace Core.Tests
                 Table t = new Table
                 {
                     Name = "TestTable",
-                    Schemaname = "dbo",
+                    Schema = "dbo",
                     Column = new System.Collections.Generic.List<Column>()
                 };
-                ClassGenerator.GenerateClass(t,"");
+                Generater.GenerateClass(t);
                 Assert.Fail();
             }
             catch (ArgumentException e)
             {
 
-            }
-        }
-
-        [TestMethod()]
-        public void GenerateClassTest_NoNameSpace()
-        {
-            try
-            {
-                Table t = new Table
-                {
-                    Name = "TestTable",
-                    Schemaname = "dbo",
-                    Column = new System.Collections.Generic.List<Column>
-                    {
-                        new Column
-                        {
-                            Name = "ID",
-                            DataType = "bigint",
-                            AllowNull = false
-                        },
-
-                        new Column
-                        {
-                            Name = "Name",
-                            DataType = "varchar",
-                            AllowNull = false,
-                            Size = 255
-                        },
-
-                        new Column
-                        {
-                            Name = "Address",
-                            DataType = "varchar",
-                            AllowNull = false,
-                            Size = 255
-                        }
-                    }
-                };
-                string result = ClassGenerator.GenerateClass(t, "");
-                if (result != null || result != "")
-                {
-                    Assert.Fail();
-                }
-            }
-            catch (ArgumentException e)
-            {
             }
         }
 
@@ -120,7 +74,7 @@ namespace Core.Tests
                 Table t = new Table
                 {
                     Name = "TestTable",
-                    Schemaname = "dbo",
+                    Schema = "dbo",
                     Column = new System.Collections.Generic.List<Column>
                     {
                         new Column
@@ -147,7 +101,7 @@ namespace Core.Tests
                         }
                     }
                 };
-                string result = ClassGenerator.GenerateClass(t,"Test");
+                string result = Generater.GenerateClass(t);
                 if(result == null || result == "")
                 {
                     Assert.Fail();

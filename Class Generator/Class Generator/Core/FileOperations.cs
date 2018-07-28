@@ -1,12 +1,25 @@
-﻿using System;
+﻿using Core.Enum;
+using System;
 using System.IO;
 
 namespace Core
 {
     public class FileOperations
     {
+        private string _path;
+        public FileOperations(string path, bool isAbsolutePath)
+        {
+            if(!isAbsolutePath)
+            {
+                _path = Path.Combine(Directory.GetCurrentDirectory(), path ?? "");
+            }
+            else
+            {
+                _path = path;
+            }
+        }
 
-        public static string Save(string table, string poco)
+        public string Save(string schema, string table, string poco)
         {
 
             if (string.IsNullOrEmpty(table))
@@ -21,15 +34,15 @@ namespace Core
 
             try
             {
-                var current_Path = Directory.GetCurrentDirectory();
-                var output_Path = Path.Combine(current_Path, "Output", table + ".cs");
+                
+                var output_Path = Path.Combine(_path, schema, string.Concat(table, Constants.Dot_Cs));
                 if (File.Exists(output_Path))
                 {
                     File.Delete(output_Path);
                 }
-                if (!Directory.Exists(Path.Combine(current_Path, "Output")))
+                if (!Directory.Exists(Path.Combine(_path, schema)))
                 {
-                    Directory.CreateDirectory((Path.Combine(current_Path, "Output")));
+                    Directory.CreateDirectory((Path.Combine(_path, schema)));
                 }
                 File.WriteAllText(output_Path, poco);
                 return output_Path;
