@@ -47,7 +47,9 @@ namespace Core.Database.SQLServer
                 }
                 return tables;
             }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
             catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
             {
                 throw;
             }

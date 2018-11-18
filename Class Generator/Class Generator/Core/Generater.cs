@@ -27,7 +27,9 @@ namespace Core
                     @class = String.Format(classTemplate, table.Schema, table.Name, fields);
                     return @class.Remove(@class.Length - 3, 2); ;
                 }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
                 catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
                 {
                     throw;
                 }

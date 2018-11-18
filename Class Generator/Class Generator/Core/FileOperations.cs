@@ -47,7 +47,9 @@ namespace Core
                 File.WriteAllText(output_Path, poco);
                 return output_Path;
             }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
             catch (IOException e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
             {
                 throw;
             }

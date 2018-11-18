@@ -22,7 +22,7 @@ namespace Core.Tests
             }
             catch (Exception e)
             {
-
+                
             }
         }
 
@@ -42,7 +42,7 @@ namespace Core.Tests
             }
             catch (ArgumentException e)
             {
-
+                
             }
         }
 
