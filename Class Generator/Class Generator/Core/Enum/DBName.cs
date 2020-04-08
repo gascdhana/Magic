@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Enum
 {
+	//Database provider names
     public enum DBName
     {
         None = 0,
